@@ -2,7 +2,7 @@
   "meta": {
     "version": 1,
     "updated": "2026-09-07",
-    "purpose": "纠正 open-meteo/GeoNames 地理编码的错误或缺失（对方不会修，只能自己维护）。改这里后跑 node weather-macos/data-raw/scripts/extract-weather-data.js 生成 weather-macos/js/city-overrides.js，页面即生效。",
+    "purpose": "纠正 open-meteo/GeoNames 地理编码的错误或缺失（对方不会修，只能自己维护）。改这里后跑 node data-raw/scripts/extract-weather-data.js 生成 js/city-overrides.js，页面即生效。",
     "howTo": "用户反馈地名错误时加一条 entry：aliases 写用户可能输入的写法，place 写核实过的正确地点（含坐标），fixIds/fixNames 修 API 返回的错误字段。坐标只写政府/维基可查的公开值。"
   },
   "entries": [

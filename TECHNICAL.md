@@ -77,7 +77,7 @@
 
 ## 7. 本地数据库的构建与更新
 
-`weather-macos/data/*.db.js` 是生成物，勿手改：
+`data/*.db.js` 是生成物，勿手改：
 - `airports.db.js`（4008 行）：`data-raw/scripts/fetch-geo-data.js` 从 OurAirports CSV（Public Domain）过滤“有 IATA 码+定期航班+机场类型”生成；
 - `admin-divisions_zh-cn.db.js`（3212 行）：同脚本从国家地名信息库整理数据取省/市/区县三级生成；
 - `city-overrides.js`：`extract-weather-data.js` 从 `data-raw/city-overrides.json` 生成。

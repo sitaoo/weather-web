@@ -1,9 +1,9 @@
 # 城市纠错字典（city-overrides.json）
 
-open-meteo/GeoNames 不会修他们的数据（短中文查不到知名地点、行政区划错误、整市缺失），所以自己维护这份字典。源文件 `weather-macos/data-raw/city-overrides.json`，跑抽取脚本生成页面直接加载的 `weather-macos/js/city-overrides.js`：
+open-meteo/GeoNames 不会修他们的数据（短中文查不到知名地点、行政区划错误、整市缺失），所以自己维护这份字典。源文件 `data-raw/city-overrides.json`，跑抽取脚本生成页面直接加载的 `js/city-overrides.js`：
 
 ```bash
-node weather-macos/data-raw/scripts/extract-weather-data.js
+node data-raw/scripts/extract-weather-data.js
 ```
 
 ## 字段说明

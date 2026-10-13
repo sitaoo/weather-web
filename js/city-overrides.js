@@ -1,4 +1,4 @@
-// Generated from weather-macos/data-raw/city-overrides.json — do not hand-edit; re-run extractor.
+// Generated from data-raw/city-overrides.json — do not hand-edit; re-run extractor.
 window.WeatherMacOverrides = {
   "version": 1,
   "entries": [

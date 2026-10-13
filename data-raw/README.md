@@ -1,4 +1,4 @@
-# data-raw/ —— 天气数据目录（weather-macos 专用）
+# data-raw/ —— 天气数据目录
 
 本仓库天气应用的数据源与抽取出的参考表。
 **生成的文件不要手改** —— 改应用源码后重新跑抽取脚本。
@@ -6,27 +6,27 @@
 ## 重新生成
 
 ```bash
-node weather-macos/data-raw/scripts/extract-weather-data.js
-# 读取 weather-macos/js/{i18n,api}.js + weather-window.js + vendor/transverter.js，生成下面的 JSON/MD
+node data-raw/scripts/extract-weather-data.js
+# 读取 js/{i18n,api}.js + weather-window.js + vendor/transverter.js，生成下面的 JSON/MD
 ```
 
 ## 文件说明
 
 | 文件 | 来源 | 内容 |
 |---|---|---|
-| `languages.json` / `languages.md` | `weather-macos/js/i18n.js` LANGUAGES | 21 种语言：code/name/native/en/flag（含运行时派生的 zh-tw） |
-| `wmo-codes.json` / `wmo-codes.md` | `weather-macos/js/api.js` weatherCodeMap | 28 个 WMO 天气代码：日夜两套 Meteocons 图标 + 20 语言描述（MD 表格只列中英；zh-tw 运行时派生，不在文件里） |
+| `languages.json` / `languages.md` | `js/i18n.js` LANGUAGES | 21 种语言：code/name/native/en/flag（含运行时派生的 zh-tw） |
+| `wmo-codes.json` / `wmo-codes.md` | `js/api.js` weatherCodeMap | 28 个 WMO 天气代码：日夜两套 Meteocons 图标 + 20 语言描述（MD 表格只列中英；zh-tw 运行时派生，不在文件里） |
 | `weekdays.json` | `i18n.js` weekDaysMap | 21 语言星期表（含运行时派生的 zh-tw） |
 | `chrome-strings.json` | `i18n.js` CHROME_TEXT | 41 个界面文案 × 21 语言（设置项、九宫格标签、壁纸/玻璃名、提示语；zh-tw 运行时派生） |
 | `background-gradients.json` | `api.js` backgroundMap | 每个 WMO 代码的日夜渐变背景（主卡片 + 随天气玻璃模式用） |
 | `temp-color-scale.json` | `weather-window.js` TEMP_STOPS | 11 档摄氏度→颜色映射（10 天温度条用） |
 | `precip-levels.json` | `weather-window.js` 水滴规则 | 降水概率阈值 → 0~3 级水滴（30/60/90） |
-| `wallpapers.json` | `desktop.js` + `weather-macos/data/wallpapers/` | 14 张照片、4 款渐变、5 组昼夜自动、`time` 模式时段映射 |
+| `wallpapers.json` | `desktop.js` + `data/wallpapers/` | 14 张照片、4 款渐变、5 组昼夜自动、`time` 模式时段映射 |
 | `glass-options.json` | 设置项 | 玻璃特效选项（`dark`/`light`/`weather`） |
-| `city-overrides.json` / `city-overrides.md` | 手工维护（详见同名 md） | 地名纠错字典：别名→固化地点置顶、fix 修 API 错误字段；改后跑抽取脚本生成 `weather-macos/js/city-overrides.js` |
-| `chinese-convert.json` | `weather-macos/js/vendor/transverter.js`（mumuy/chinese-transverter，MIT），抽取脚本第 8 节生成 | 简繁转换数据：2588 组单字映射 `chars`、固定词 `words`、台湾惯用词 `twIdioms`（专名禁用，见 TECHNICAL §4）、单向繁→简 `t2sExtra` |
-| `airports.json` | OurAirports（Public Domain，每日更新），`scripts/fetch-geo-data.js` 生成 | 4008 个有 IATA 码+定期航班的机场 `[iata,name,municipality,iso,lat,lon]`；运行时由同脚本生成 `weather-macos/data/airports.db.js`（`<script>` 懒加载，file:// 可用），只管定位不管翻译 |
-| `admin-divisions_zh-cn.json` | slightlee/regions-data（MIT，国家地名信息库），同脚本生成 | 中国省/市/区县三级 3212 行 `[code,name,parent,level]`；运行时由同脚本生成 `weather-macos/data/admin-divisions_zh-cn.db.js`（`<script>` 懒加载，file:// 可用），只做查询扩展与 admin2 纠错，不存坐标不做翻译 |
+| `city-overrides.json` / `city-overrides.md` | 手工维护（详见同名 md） | 地名纠错字典：别名→固化地点置顶、fix 修 API 错误字段；改后跑抽取脚本生成 `js/city-overrides.js` |
+| `chinese-convert.json` | `js/vendor/transverter.js`（mumuy/chinese-transverter，MIT），抽取脚本第 8 节生成 | 简繁转换数据：2588 组单字映射 `chars`、固定词 `words`、台湾惯用词 `twIdioms`（专名禁用，见 TECHNICAL §4）、单向繁→简 `t2sExtra` |
+| `airports.json` | OurAirports（Public Domain，每日更新），`scripts/fetch-geo-data.js` 生成 | 4008 个有 IATA 码+定期航班的机场 `[iata,name,municipality,iso,lat,lon]`；运行时由同脚本生成 `data/airports.db.js`（`<script>` 懒加载，file:// 可用），只管定位不管翻译 |
+| `admin-divisions_zh-cn.json` | slightlee/regions-data（MIT，国家地名信息库），同脚本生成 | 中国省/市/区县三级 3212 行 `[code,name,parent,level]`；运行时由同脚本生成 `data/admin-divisions_zh-cn.db.js`（`<script>` 懒加载，file:// 可用），只做查询扩展与 admin2 纠错，不存坐标不做翻译 |
 | `open-meteo-api.md` | 手写 | 预报/地理编码/IP 三个接口的参数字段、搜索扩展与合并策略、图标 CDN |
 | `storage-keys.md` | 手写 | 10 个 `weatherMac_*` 本地存储键、数据结构、默认值 |
 | `wmo-code.csv` | 旧文件 | 老版 WMO 参考（已被 `wmo-codes.json` 取代） |
@@ -35,10 +35,10 @@ node weather-macos/data-raw/scripts/extract-weather-data.js
 
 ## 给谁用
 
-- `weather-macos/` 直接读打包好的 `js/i18n.js` + `js/api.js`（内置，可离线）。
+- 应用本体直接读打包好的 `js/i18n.js` + `js/api.js`（内置，可离线）。
 - 以后做新东西（小组件、其他端）直接复用这些 JSON，别再手抄数据。
 
-## 天气查询与显示全流程（weather-macos）
+## 天气查询与显示全流程
 
 ### 1. 启动初始化
 

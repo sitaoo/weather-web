@@ -26,7 +26,6 @@
 ## 快速开始
 
 ```bash
-cd weather-macos
 python -m http.server 8000
 ```
 
@@ -87,7 +86,7 @@ python -m http.server 8000
 ## 目录结构
 
 ```
-weather-macos/
+weather-web/
   index.html          入口（桌面 + 窗口 + 设置弹窗骨架）
   css/desktop.css     桌面、菜单栏、卡片、Dock
   css/window.css      天气窗口、设置弹窗

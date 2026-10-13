@@ -2,7 +2,7 @@
 
 预报接口：`https://api.open-meteo.com/v1/forecast`，地理编码：`https://geocoding-api.open-meteo.com/v1/search`。免 Key。
 
-## 预报请求参数（weather-macos 实际用的）
+## 预报请求参数（应用实际用的）
 
 | 参数 | 取值 |
 |---|---|

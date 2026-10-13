@@ -1,5 +1,5 @@
 // Lazy-loaded expanded geo databases (airport IATA table + admin divisions).
-// Runtime files live in weather-macos/data/*.db.js and are injected via
+// Runtime files live in data/*.db.js and are injected via
 // <script> (not fetch), so they also load on file:// where fetch is blocked.
 // Each file assigns one window global, consumed once, then cleaned up.
 // Loaded once per session and cached in memory; missing files yield null and

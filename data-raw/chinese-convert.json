@@ -1,5 +1,5 @@
 {
-  "source": "weather-macos/js/vendor/transverter.js (mumuy/chinese-transverter, MIT)",
+  "source": "js/vendor/transverter.js (mumuy/chinese-transverter, MIT)",
   "note": "chars: one-to-one Simplified->Traditional (index-aligned); words: fixed multi-char mappings both directions; twIdioms: Simplified->Taiwan usage (proper nouns should skip these); t2sExtra: one-way Traditional->Simplified singles",
   "counts": {
     "chars": 2588

@@ -1,6 +1,6 @@
 # Languages
 
-> Generated from `weather-macos/js/i18n.js` LANGUAGES. Do not hand-edit; re-run extractor.
+> Generated from `js/i18n.js` LANGUAGES. Do not hand-edit; re-run extractor.
 
 | code | name | native | en | flag |
 |---|---|---|---|---|

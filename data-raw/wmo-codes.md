@@ -1,6 +1,6 @@
 # WMO Weather Codes
 
-> Generated from `weather-macos/js/api.js` weatherCodeMap. Descriptions cover 20 languages in `wmo-codes.json`; table shows zh/en. Icons are Meteocons names (`https://unpkg.com/@meteocons/svg@latest/fill/{icon}.svg`).
+> Generated from `js/api.js` weatherCodeMap. Descriptions cover 20 languages in `wmo-codes.json`; table shows zh/en. Icons are Meteocons names (`https://unpkg.com/@meteocons/svg@latest/fill/{icon}.svg`).
 
 | code | icon_day | icon_night | zh | en |
 |---|---|---|---|---|

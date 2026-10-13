@@ -1,16 +1,16 @@
 // Fetches external geo reference data and builds compact runtime tables.
-// Run from repo root: node weather-macos/data-raw/scripts/fetch-geo-data.js
+// Run from repo root: node data-raw/scripts/fetch-geo-data.js
 // Sources:
 //   - OurAirports airports.csv (Public Domain, nightly): IATA + scheduled-service airports
 //   - slightlee/regions-data JSON (MIT, 国家地名信息库): admin divisions level 1-3
-// Outputs (written twice: weather-macos/data-raw/ reference + weather-macos/data/ runtime copy):
+// Outputs (written twice: data-raw/ reference + data/ runtime copy):
 //   - airports.json: [iata, name, municipality, iso_country, lat, lon][]
 //   - admin-divisions_zh-cn.json: { updated, rows: [[code, name, parentCode, level]] }
 const fs = require('fs');
 const path = require('path');
-const ROOT = path.resolve(__dirname, '..', '..', '..');
-const OUT = path.join(ROOT, 'weather-macos', 'data-raw');
-const RUNTIME = path.join(ROOT, 'weather-macos', 'data');
+const ROOT = path.resolve(__dirname, '..', '..');
+const OUT = path.join(ROOT, 'data-raw');
+const RUNTIME = path.join(ROOT, 'data');
 
 const AIRPORTS_URL = 'https://davidmegginson.github.io/ourairports-data/airports.csv';
 const REGIONS_URL = 'https://raw.githubusercontent.com/slightlee/regions-data/main/data/processed/regions_20260304_173812.json';
@@ -64,7 +64,7 @@ async function main() {
   const airportsPayload = JSON.stringify({ source: 'OurAirports (Public Domain)', updated: new Date().toISOString().slice(0, 10), rows: airports });
   fs.writeFileSync(path.join(OUT, 'airports.json'), airportsPayload + '\n');
   fs.writeFileSync(path.join(RUNTIME, 'airports.db.js'),
-    '// Generated from weather-macos/data-raw/airports.json — do not hand-edit; re-run fetch-geo-data.js.\n' +
+    '// Generated from data-raw/airports.json — do not hand-edit; re-run fetch-geo-data.js.\n' +
     '// Loaded via <script> (not fetch) so it also works on file://.\n' +
     'window.__AIRPORTS_DB = ' + airportsPayload + ';\n');
   console.log('airports:', airports.length, 'rows,', (airportsPayload.length / 1024).toFixed(0) + 'KB');
@@ -86,7 +86,7 @@ async function main() {
   });
   fs.writeFileSync(path.join(OUT, 'admin-divisions_zh-cn.json'), adminPayload + '\n');
   fs.writeFileSync(path.join(RUNTIME, 'admin-divisions_zh-cn.db.js'),
-    '// Generated from weather-macos/data-raw/admin-divisions_zh-cn.json — do not hand-edit; re-run fetch-geo-data.js.\n' +
+    '// Generated from data-raw/admin-divisions_zh-cn.json — do not hand-edit; re-run fetch-geo-data.js.\n' +
     '// Loaded via <script> (not fetch) so it also works on file://.\n' +
     'window.__ADMIN_DB = ' + adminPayload + ';\n');
   console.log('admin rows:', rows2.length, (adminPayload.length / 1024).toFixed(0) + 'KB');

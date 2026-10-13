@@ -1,4 +1,4 @@
-# 本地存储键（weather-macos）
+# 本地存储键
 
 前缀统一 `weatherMac_*`（和 weather-web 的 `weatherApp_*` 隔离）。
 
