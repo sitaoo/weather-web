@@ -11,7 +11,7 @@
     return btn;
   }
 
-  // Shared macOS titlebar: traffic lights + left title + optional settings entry.
+  // Shared macOS-style titlebar: traffic lights + left title + optional settings entry.
   // opts: { title, closeId, minId, onClose, onMin, settings, onSettings,
   //         sidebar } — sidebar adds the collapse toggle + quick search
   // (main window only; rebuilt on every buildAll, behavior binds in

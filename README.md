@@ -1,8 +1,8 @@
-# Weather macOS
+# Weather Web
 
 English | [简体中文](./README.zh-CN.md)
 
-A weather desktop app styled after macOS: the browser window simulates a macOS desktop, and a small weather card in the top-right opens the full weather window. Written in plain HTML / CSS / JavaScript, **no build step, no third-party dependencies, no API key required**.
+A lightweight web weather app with a macOS-like desktop style: the browser window simulates a macOS desktop, and a small weather card in the top-right opens the full weather window. Written in plain HTML / CSS / JavaScript, **no build step, no third-party dependencies, no API key required**.
 
 ## Features
 
@@ -96,7 +96,7 @@ weather-web/
   js/api.js           Wrappers for all external APIs
   js/geo-db.js        Lazy loading of the local airport / division databases
   js/city-overrides.js Place-name correction dictionary (generated from data-raw; do not edit by hand)
-  js/titlebar.js      Shared macOS title bar module
+  js/titlebar.js      Shared macOS-style title bar module
   js/desktop.js       Desktop interaction (clock, wallpaper, card dragging)
   js/weather-window.js All logic inside the window (search, forecast rendering, settings)
   data/               Runtime assets: geographic databases (lazy-loaded) + local wallpapers + icons

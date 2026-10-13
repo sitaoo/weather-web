@@ -451,7 +451,7 @@ const weekDaysMap = {
     uk: ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
 };
 
-  // macOS 设置面板文字（仅 zh/en）
+  // 设置面板文字（仅 zh/en）
   const SETTINGS_TEXT = {
     zh: { settings: '设置', theme: '外观', wallpaper: '壁纸', hour12: '12小时制', refresh: '自动刷新', defaultCity: '默认城市' },
     en: { settings: 'Settings', theme: 'Appearance', wallpaper: 'Wallpaper', hour12: '12-hour clock', refresh: 'Auto refresh', defaultCity: 'Default city' }

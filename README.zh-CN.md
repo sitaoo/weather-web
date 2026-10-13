@@ -1,8 +1,8 @@
-# Weather macOS
+# Weather Web
 
 [English](./README.md) | 简体中文
 
-一个仿 macOS 风格的桌面天气应用：浏览器窗口模拟 macOS 桌面，右上角天气小卡片点开是完整天气窗口。纯原生 HTML / CSS / JavaScript 实现，**无构建步骤、无第三方依赖、无需 API Key**。
+一个轻量 Web 天气应用，采用 macOS-like 桌面风格：浏览器窗口模拟 macOS 桌面，右上角天气小卡片点开是完整天气窗口。纯原生 HTML / CSS / JavaScript 实现，**无构建步骤、无第三方依赖、无需 API Key**。
 
 ## 功能一览
 
@@ -96,7 +96,7 @@ weather-web/
   js/api.js           所有外部接口封装
   js/geo-db.js        本地机场/区划库懒加载
   js/city-overrides.js 地名纠错字典（由 data-raw 生成，勿手改）
-  js/titlebar.js      macOS 标题栏公共模块
+  js/titlebar.js      macOS 风格标题栏公共模块
   js/desktop.js       桌面交互（时钟、壁纸、卡片拖动）
   js/weather-window.js 窗口内全部逻辑（搜索、预报渲染、设置）
   data/               运行时资源：地理数据库（懒加载）+ 本地壁纸 + 图标
