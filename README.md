@@ -1,56 +1,58 @@
 # Weather macOS
 
-一个仿 macOS 风格的桌面天气应用：浏览器窗口模拟 macOS 桌面，右上角天气小卡片点开是完整天气窗口。纯原生 HTML / CSS / JavaScript 实现，**无构建步骤、无第三方依赖、无需 API Key**。
+English | [简体中文](./README.zh-CN.md)
 
-## 功能一览
+A weather desktop app styled after macOS: the browser window simulates a macOS desktop, and a small weather card in the top-right opens the full weather window. Written in plain HTML / CSS / JavaScript, **no build step, no third-party dependencies, no API key required**.
 
-**桌面**
-- 顶部菜单栏（Logo、应用名、多语言时钟）、可换壁纸的桌面背景
-- 天气小卡片：可鼠标拖动摆放、位置自动记住；城市名过长单行省略，悬停自动滚动显示全文
-- 底部 Dock：暂时隐藏（只有一个天气图标，等图标多了再显示）；左上角还有天气 / 设置两个桌面图标入口
+## Features
 
-**天气窗口**
-- 左侧多城市列表：增删、点击切换、拖动排序；定位城市是独立特殊行（恒置顶、可与用户城市重合去重）；可选显示地理坐标标签
-- 侧边栏可折叠（title 栏图标开关），收起后 title 栏 🔍 可展开悬浮搜索框
-- 顶部大字当前天气（随昼夜/天气换渐变背景）+ 24 小时横向预报（拖动/两侧悬浮翻页，降雨才显示概率）+ 7 天预报（日期/描述/图标/水滴/概率/温度区间条，降雨列全周无雨自动折叠）
-- 气象预警横幅（中国中央气象台 + 美国 NWS）：首行最新一条（有正文则替标题），历史可展开，点击直达原文
-- 九宫格指标：体感温度、湿度、风速、降水、UV、日出日落、能见度、气压、AQI（真数据）
+**Desktop**
+- Top menu bar (logo, app name, multilingual clock) and a wallpaper-capable desktop background
+- Weather card: draggable with the mouse, position is remembered; long city names are truncated on one line and scroll on hover to show the full name
+- Bottom Dock: currently hidden (only one weather icon for now; it will be shown once there are more icons). Two desktop icons in the top-left open Weather and Settings
 
-**设置**
-- 温度单位 °C/°F、21 种界面语言（含繁体中文）、深浅外观、12/24 小时制、自动刷新（关/15/30/60 分钟）
-- 玻璃特效（深邃藏青 / 经典浅透 / 随天气变化）、壁纸（4 款渐变 + 5 组昼夜自动 + 时间自动；多图壁纸点数量徽标可全屏预览切换）
-- 三个高级开关：扩充机场数据库、扩充行政区划库（默认开）、显示匹配来源（默认关，调试搜索命中来源用）
+**Weather window**
+- Multi-city list on the left: add, remove, switch by click, reorder by drag; the "current location" row is a special pinned row (always on top, de-duplicated against a user city); geographic coordinate labels are optional
+- The sidebar is collapsible (toggle icon in the title bar); when collapsed, the 🔍 icon in the title bar opens a floating search box
+- Large current-weather display at the top (gradient background changes with day/night and weather), a 24-hour horizontal forecast (drag or use the floating arrows on each side to page; precipitation probability only appears when it rains), and a 7-day forecast (date, description, icon, droplet, probability, temperature range bar; the precipitation column collapses automatically when there is no rain all week)
+- Weather alert banner (China Meteorological Administration + US NWS): shows the latest alert in the first line (its body replaces the title when available), history can be expanded, and clicking opens the original source
+- Nine-tile metrics grid: feels-like temperature, humidity, wind speed, precipitation, UV, sunrise/sunset, visibility, pressure, and AQI (real data)
 
-**搜索**：中英文城市名、机场三字码（如 `PEK`）、IP 地址（如 `8.8.8.8`）、十进制坐标（如 `39.9,116.4`）、维基式经纬度（如 `28°22′N 100°14′E`）。中/繁自动双字形查询、输出按界面语言归一化。搜不到的知名地点可用内置纠错字典兜底（如香格里拉、稻城亚丁）。
+**Settings**
+- Temperature unit °C/°F, 21 interface languages (including Traditional Chinese), light/dark appearance, 12/24-hour clock, auto refresh (off / 15 / 30 / 60 minutes)
+- Glass effect (deep navy / classic light translucent / follows weather), wallpapers (4 gradients + 5 day/night automatic sets + time-based automatic; wallpapers with multiple images show a count badge and can be previewed and switched fullscreen)
+- Three advanced toggles: extended airport database, extended administrative divisions database (on by default), and show match source (off by default, for debugging search hits)
 
-## 快速开始
+**Search**: English and Chinese city names, airport IATA codes (e.g. `PEK`), IP addresses (e.g. `8.8.8.8`), decimal coordinates (e.g. `39.9,116.4`), and Wikipedia-style latitude/longitude (e.g. `28°22′N 100°14′E`). Simplified and Traditional Chinese are both queried automatically, and output is normalized to the interface language. Well-known places that the API cannot find fall back to a built-in correction dictionary (e.g. Shangri-La, Daocheng Yading).
+
+## Quick Start
 
 ```bash
 python -m http.server 8000
 ```
 
-浏览器打开 http://localhost:8000 即可。也可以直接双击 `index.html` 打开（file:// 同样可用）。
+Open http://localhost:8000 in your browser. You can also double-click `index.html` to open it directly (works over `file://` as well).
 
-## 数据来源（均为免费、无需 Key）
+## Data Sources (all free, no key required)
 
-| 用途 | 来源 |
+| Purpose | Source |
 |---|---|
-| 天气预报 | Open-Meteo forecast（含逐小时/逐日） |
-| 城市搜索/多语言地名 | Open-Meteo geocoding（GeoNames 数据） |
-| 空气质量 | Open-Meteo air-quality（美标 AQI） |
-| IP 定位 / IP 查天气 | 四服务链（ipwho.is → ipapi.co → ipinfo.io → ip-api.com），HTTPS 优先，5s 超时逐级降级 |
-| 坐标反查地名 | BigDataCloud（免 Key） |
-| 气象预警（中国） | 中央气象台 NMC（免 Key，HTTPS+CORS 直调，一次拿全量，10 分钟缓存） |
-| 气象预警（美国） | NWS alerts API（免 Key，CORS 放行，按坐标查生效中） |
-| 机场库（4008 个 IATA 机场） | OurAirports（公有领域，每日更新） |
-| 中国行政区划（省/市/区县） | 国家地名信息库整理数据（MIT） |
-| 天气图标 | Meteocons（unpkg CDN） |
+| Weather forecast | Open-Meteo forecast (hourly and daily) |
+| City search / multilingual place names | Open-Meteo geocoding (GeoNames data) |
+| Air quality | Open-Meteo air-quality (US AQI) |
+| IP location / weather by IP | Four-service chain (ipwho.is → ipapi.co → ipinfo.io → ip-api.com), HTTPS first, 5s timeout with step-by-step fallback |
+| Reverse geocoding (coordinates → place name) | BigDataCloud (no key) |
+| Weather alerts (China) | China Meteorological Administration NMC (no key, direct HTTPS+CORS, full list in one request, 10-minute cache) |
+| Weather alerts (US) | NWS alerts API (no key, CORS allowed, active alerts by coordinates) |
+| Airport database (4008 IATA airports) | OurAirports (public domain, updated daily) |
+| Chinese administrative divisions (province / city / county) | Compiled data from the National Place Name Information Database (MIT) |
+| Weather icons | Meteocons (unpkg CDN) |
 
-署名要求：界面保留 “Weather data by Open-Meteo.com”。
+Attribution requirement: keep "Weather data by Open-Meteo.com" visible in the interface.
 
-## 给其他产品用的 SDK
+## SDK for Other Products
 
-`sdk/weather-api.js` 是数据层超集（v2.0.0）：单文件约 80KB、零依赖，浏览器用 `<script>` 引入（`window.WeatherAPI`），Node 18+ 可 `require()`。覆盖全部查询面（预报/空气/地理编码/逆地理/IP/中美预警）+ 归一化 + 21 语言输出 + 内存 TTL 缓存（默认开，`opts.cache === false` 关）。文件内 `SDK-DATA` 数据区由抽取脚本从 data-raw/vendor 生成，勿手改；完整参数与返回结构见文件内 JSDoc。
+`sdk/weather-api.js` is the data-layer superset (v2.0.0): a single file of about 80KB with zero dependencies. Include it in the browser with `<script>` (exposes `window.WeatherAPI`), or `require()` it in Node 18+. It covers the full query surface (forecast / air quality / geocoding / reverse geocoding / IP / China and US alerts), plus normalization, 21-language output, and an in-memory TTL cache (on by default; `opts.cache === false` disables it). The `SDK-DATA` data block inside the file is generated from data-raw/vendor by the extraction script; do not edit it by hand. See the JSDoc inside the file for full parameters and return shapes.
 
 ```html
 <script src="sdk/weather-api.js"></script>
@@ -61,43 +63,43 @@ python -m http.server 8000
 </script>
 ```
 
-| 方法 | 说明 |
+| Method | Description |
 |---|---|
-| `searchPlaces(query, {language, count})` | 地名搜索（中/繁双字形合并、输出按语言归一化） |
-| `getPlace(id, {language})` | 按 id 精确取地点（语言切换重取显示名用） |
-| `getWeather(lat, lon, {unit, lang, timezone, forecastDays, pastDays})` | 当前 + 逐小时 + 预报（21 语言描述、图标 URL 自带） |
-| `getAirQuality(lat, lon, {lang})` | 美标 AQI + PM2.5/PM10 + 本地化等级（无数据返回 null，不抛错） |
-| `locateByIP()` | IP 粗定位（城市/坐标/时区，4 路链） |
-| `reverseGeocode(lat, lon, {language})` | 坐标→地名（中/繁输出归一化） |
-| `describe(code, {lang, isDay})` | WMO 天气码→文字描述+图标（21 语言） |
-| `getWeekdays(lang)` | 星期名（21 语言） |
-| `describeAqi(aqi, lang)` | AQI 数值→等级+本地化描述 |
-| `getChinaWarnings()` | NMC 预警全量裸列表（adcode 匹配见主应用） |
-| `getUSAlerts(lat, lon)` | NWS 生效中预警（归一化，色级+正文直给） |
-| `getWarningBody(alert, {firecrawl})` | 预警正文（默认 jina，可配自托管 FireCrawl） |
-| `clearCache()` | 清空内存缓存 |
+| `searchPlaces(query, {language, count})` | Place search (Simplified/Traditional results merged, output normalized by language) |
+| `getPlace(id, {language})` | Fetch a place exactly by id (used to re-fetch display names when switching language) |
+| `getWeather(lat, lon, {unit, lang, timezone, forecastDays, pastDays})` | Current + hourly + forecast (21-language descriptions, icon URLs included) |
+| `getAirQuality(lat, lon, {lang})` | US AQI + PM2.5/PM10 + localized level (returns null when no data, does not throw) |
+| `locateByIP()` | Rough IP location (city / coordinates / timezone, 4-service chain) |
+| `reverseGeocode(lat, lon, {language})` | Coordinates → place name (Simplified/Traditional output normalized) |
+| `describe(code, {lang, isDay})` | WMO weather code → text description + icon (21 languages) |
+| `getWeekdays(lang)` | Weekday names (21 languages) |
+| `describeAqi(aqi, lang)` | AQI value → level + localized description |
+| `getChinaWarnings()` | Full raw list of NMC warnings (adcode matching is done in the main app) |
+| `getUSAlerts(lat, lon)` | Active NWS alerts (normalized, color level + body text provided directly) |
+| `getWarningBody(alert, {firecrawl})` | Warning body text (jina by default; self-hosted FireCrawl can be configured) |
+| `clearCache()` | Clear the in-memory cache |
 
-## 简要技术说明
+## Technical Notes
 
-- 数据流：搜索先过本地纠错字典 → 本地机场库（IATA 精确命中）→ 线上地理编码（多语言回退 + 行政区划扩展 + 合并去重）→ 拿坐标调预报接口 → 渲染。详见 `TECHNICAL.md`。
-- 状态全部存在 `localStorage`（`weatherMac_*` 前缀）：城市列表、当前城市、单位、语言、主题、壁纸、玻璃特效、开关等；每个城市还缓存各语言下显示过的名称，切语言回看不重复请求。
-- 语言切换后，已存城市会自动按新语言重新拉取显示名（有 `id` 的走精确查询，无 `id` 的走逆地理），字典固化的地名不受影响。
+- Data flow: search first checks the local correction dictionary → local airport database (exact IATA match) → online geocoding (multilingual fallback + administrative division expansion + merge and dedupe) → forecast API with the coordinates → render. See `TECHNICAL.md` for details.
+- All state is stored in `localStorage` (prefix `weatherMac_*`): city list, current city, unit, language, theme, wallpaper, glass effect, toggles, etc. Each city also caches the names displayed in each language, so switching back to a language does not trigger repeated requests.
+- After a language change, saved cities automatically re-fetch their display names in the new language (cities with an `id` use an exact lookup, cities without one use reverse geocoding). Names fixed by the dictionary are not affected.
 
-## 目录结构
+## Project Structure
 
 ```
 weather-web/
-  index.html          入口（桌面 + 窗口 + 设置弹窗骨架）
-  css/desktop.css     桌面、菜单栏、卡片、Dock
-  css/window.css      天气窗口、设置弹窗
-  js/i18n.js          21 语言文案（界面 + 天气描述 + 星期，zh-tw 运行时派生）
-  js/api.js           所有外部接口封装
-  js/geo-db.js        本地机场/区划库懒加载
-  js/city-overrides.js 地名纠错字典（由 data-raw 生成，勿手改）
-  js/titlebar.js      macOS 标题栏公共模块
-  js/desktop.js       桌面交互（时钟、壁纸、卡片拖动）
-  js/weather-window.js 窗口内全部逻辑（搜索、预报渲染、设置）
-  data/               运行时资源：地理数据库（懒加载）+ 本地壁纸 + 图标
+  index.html          Entry point (desktop + window + settings dialog skeleton)
+  css/desktop.css     Desktop, menu bar, card, Dock
+  css/window.css      Weather window, settings dialog
+  js/i18n.js          Copy for 21 languages (UI + weather descriptions + weekdays; zh-tw is derived at runtime)
+  js/api.js           Wrappers for all external APIs
+  js/geo-db.js        Lazy loading of the local airport / division databases
+  js/city-overrides.js Place-name correction dictionary (generated from data-raw; do not edit by hand)
+  js/titlebar.js      Shared macOS title bar module
+  js/desktop.js       Desktop interaction (clock, wallpaper, card dragging)
+  js/weather-window.js All logic inside the window (search, forecast rendering, settings)
+  data/               Runtime assets: geographic databases (lazy-loaded) + local wallpapers + icons
 ```
 
-`./data-raw/` 下有全部可复用数据表（语言、WMO 天气代码、行政区划、机场库等）及抽取脚本，详见该目录 README。
+`./data-raw/` contains all reusable data tables (languages, WMO weather codes, administrative divisions, airport database, etc.) and the extraction scripts. See the README in that directory for details.
