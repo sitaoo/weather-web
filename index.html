@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather macOS</title>
+<link rel="icon" type="image/svg+xml" href="data/icons/bear.svg">
+<link rel="stylesheet" href="css/desktop.css">
+<link rel="stylesheet" href="css/window.css">
+</head>
+<body data-wallpaper="sky">
+<div id="wallpaper" class="wallpaper"></div>
+<header id="menubar" class="menubar">
+  <div class="menubar-left"><span class="apple"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg></span><span class="app-name" id="menuAppName">天气</span></div>
+  <div class="menubar-right"><span id="menuClock">--</span></div>
+</header>
+<main id="desktop" class="desktop">
+  <div class="desktop-icons">
+    <button class="desktop-icon" id="desktopWeatherIcon" title="打开天气"><span class="desktop-icon-img"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="7.5" r="2.5"/><path d="M7.5 1.5v1.5M1.5 7.5H3M3.3 3.3l1 1M11.7 3.3l-1 1"/><path d="M18 14h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></span><span class="desktop-icon-label" id="desktopWeatherLabel">天气</span></button>
+    <button class="desktop-icon" id="desktopSettingsIcon" title="打开设置"><span class="desktop-icon-img"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span><span class="desktop-icon-label" id="desktopSettingsLabel">设置</span></button>
+  </div>
+  <section id="widgetCard" class="widget-card" role="button" tabindex="0" title="打开天气">
+    <img id="widgetIcon" class="widget-icon" alt="">
+    <div class="widget-city"><span id="widgetCity">北京</span><svg id="widgetLoc" class="widget-loc" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" stroke="none" style="display:none"><path d="M22 2l-8.5 20-2.5-9-9-2.5z"/></svg></div>
+    <div class="widget-temp" id="widgetTemp">22°</div>
+    <div class="widget-sub"><div class="widget-desc-row"><span id="widgetDesc">晴</span><span id="widgetWarn" class="widget-warn hidden"></span></div><span id="widgetHL">26° / 16°</span></div>
+  </section>
+</main>
+<div id="weatherWindow" class="mac-window hidden" role="dialog" aria-label="天气详情">
+  <div class="titlebar" id="windowDragHandle"></div>
+  <div class="window-body">
+<aside id="sidebar" class="sidebar">
+  <div class="city-search search-box"><span class="quick-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></span><input id="citySearch" class="quick-input" placeholder="搜索城市..." autocomplete="off"></div>
+  <div id="searchResults" class="search-results hidden"></div>
+  <ul id="cityList" class="city-list"></ul>
+</aside>
+<section id="detail" class="detail">
+  <div id="hero" class="hero">
+    <div id="heroCity" class="hero-city">--</div>
+    <div id="heroTemp" class="hero-temp">--</div>
+    <div id="heroDesc" class="hero-desc">--</div>
+    <div id="heroHL" class="hero-hl">--</div>
+  </div>
+  <div id="warnBanner" class="warn-banner hidden"></div>
+  <div class="hourly-wrap">
+    <button id="hourlyPrev" class="hour-nav" aria-label="previous">‹</button>
+    <div id="hourly" class="hourly"></div>
+    <button id="hourlyNext" class="hour-nav" aria-label="next">›</button>
+  </div>
+  <div id="tenday" class="tenday"></div>
+  <div id="grid9" class="grid9"></div>
+  <div class="attribution">Weather data by Open-Meteo.com</div>
+</section>
+  </div>
+</div>
+<footer id="dock" class="dock"><button id="dockWeather" class="dock-icon active" title="天气"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="7.5" r="2.5"/><path d="M7.5 1.5v1.5M1.5 7.5H3M3.3 3.3l1 1M11.7 3.3l-1 1"/><path d="M18 14h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></button></footer>
+ <div id="settingsModal" class="modal hidden">
+   <div class="modal-card">
+    <div class="titlebar tb-modal" id="settingsTitlebar"></div>
+    <div class="modal-body">
+     <label><span id="lblUnit">温度单位</span> <select id="setUnit"><option value="celsius">°C</option><option value="fahrenheit">°F</option></select></label>
+     <label><span id="lblLang">语言</span> <select id="setLang"></select></label>
+     <label><span id="lblTheme">外观</span> <select id="setTheme"><option value="dark" id="optDark">深色</option><option value="light" id="optLight">浅色</option></select></label>
+     <label><span id="lblHourClock">时间制式</span> <select id="setHourClock"><option value="12" id="optHour12">12小时制</option><option value="24" id="optHour24">24小时制</option></select></label>
+     <label><span id="lblRefresh">自动刷新</span> <select id="setRefresh"><option value="0" id="optRefreshOff">关</option><option value="15">15min</option><option value="30">30min</option><option value="60">60min</option></select></label>
+     <hr class="settings-divider">
+    <fieldset class="wallpaper-fieldset">
+      <legend id="lgGlass">玻璃特效</legend>
+      <div id="glassPicker" class="wallpaper-picker"></div>
+    </fieldset>
+    <fieldset class="wallpaper-fieldset">
+      <legend id="lgWallpaper">壁纸</legend>
+      <div id="wallpaperPicker" class="wallpaper-picker"></div>
+    </fieldset>
+     <hr class="settings-divider">
+     <div class="setting-row"><span id="lblExpandAirports">扩充机场数据库</span><button type="button" class="switch on" id="setExpandAirports" role="switch" aria-checked="true"><span class="switch-state on" id="stateExpandAirports">ON</span></button></div>
+     <div class="setting-row"><span id="lblExpandAdmin">扩充行政区划库</span><button type="button" class="switch on" id="setExpandAdmin" role="switch" aria-checked="true"><span class="switch-state on" id="stateExpandAdmin">ON</span></button></div>
+     <div class="setting-row"><span id="lblShowSource">显示匹配来源</span><button type="button" class="switch" id="setShowSource" role="switch" aria-checked="false"><span class="switch-state" id="stateShowSource">OFF</span></button></div>
+     <div class="setting-row"><span id="lblShowCoords">显示地理坐标</span><button type="button" class="switch" id="setShowCoords" role="switch" aria-checked="false"><span class="switch-state" id="stateShowCoords">OFF</span></button></div>
+    </div>
+  </div>
+</div>
+<div id="toast" class="toast hidden"></div>
+<div id="galleryModal" class="modal gallery-modal hidden">
+  <div class="gallery-box" role="dialog" aria-modal="true">
+    <button type="button" class="gallery-close" id="galleryClose">×</button>
+    <button type="button" class="gallery-arrow left" id="galleryPrev">‹</button>
+    <img id="galleryImg" class="gallery-img" alt="">
+    <button type="button" class="gallery-arrow right" id="galleryNext">›</button>
+    <div id="galleryCaption" class="gallery-caption"></div>
+  </div>
+</div>
+<script src="js/vendor/transverter.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/api.js"></script>
+<script src="js/geo-db.js"></script>
+<script src="js/city-overrides.js"></script>
+<script src="js/titlebar.js"></script>
+<script src="js/desktop.js"></script>
+<script src="js/weather-window.js"></script>
+</body>
+</html>

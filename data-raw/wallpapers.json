@@ -1,0 +1,100 @@
+{
+  "dir": "weather-macos/data/wallpapers",
+  "photos": [
+    "bigsur-afternoon.jpg",
+    "bigsur-dawn.jpg",
+    "bigsur-day.jpg",
+    "bigsur-dusk.jpg",
+    "bigsur-morning.jpg",
+    "bigsur-night.jpg",
+    "sequoia-day.jpg",
+    "sequoia-night.jpg",
+    "sonoma-day.jpg",
+    "sonoma-night.jpg",
+    "tahoe-day.jpg",
+    "tahoe-night.jpg",
+    "ventura-day.jpg",
+    "ventura-night.jpg"
+  ],
+  "gradients": [
+    "sky",
+    "space",
+    "sunset",
+    "gray"
+  ],
+  "autos": {
+    "tahoe-auto": {
+      "day": "tahoe-day.jpg",
+      "night": "tahoe-night.jpg",
+      "dayHours": [
+        6,
+        18
+      ]
+    },
+    "sequoia-auto": {
+      "day": "sequoia-day.jpg",
+      "night": "sequoia-night.jpg",
+      "dayHours": [
+        6,
+        18
+      ]
+    },
+    "sonoma-auto": {
+      "day": "sonoma-day.jpg",
+      "night": "sonoma-night.jpg",
+      "dayHours": [
+        6,
+        18
+      ]
+    },
+    "ventura-auto": {
+      "day": "ventura-day.jpg",
+      "night": "ventura-night.jpg",
+      "dayHours": [
+        6,
+        18
+      ]
+    },
+    "bigsur-auto": {
+      "slots": [
+        [
+          5,
+          8,
+          "bigsur-dawn.jpg"
+        ],
+        [
+          8,
+          11,
+          "bigsur-morning.jpg"
+        ],
+        [
+          11,
+          15,
+          "bigsur-day.jpg"
+        ],
+        [
+          15,
+          18,
+          "bigsur-afternoon.jpg"
+        ],
+        [
+          18,
+          21,
+          "bigsur-dusk.jpg"
+        ],
+        [
+          21,
+          5,
+          "bigsur-night.jpg"
+        ]
+      ]
+    }
+  },
+  "timeMode": {
+    "5-8": "sonoma-day.jpg",
+    "8-16": "tahoe-day.jpg",
+    "16-19": "bigsur-day.jpg",
+    "19-23": "sonoma-night.jpg",
+    "23-5": "tahoe-night.jpg"
+  }
+}

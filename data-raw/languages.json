@@ -1,0 +1,149 @@
+[
+  {
+    "code": "zh",
+    "name": "中文",
+    "native": "中文",
+    "en": "Chinese",
+    "flag": "🇨🇳"
+  },
+  {
+    "code": "zh-tw",
+    "name": "繁体中文",
+    "native": "繁體中文",
+    "en": "Traditional Chinese",
+    "flag": "🇹🇼"
+  },
+  {
+    "code": "en",
+    "name": "英语",
+    "native": "English",
+    "en": "English",
+    "flag": "🇬🇧"
+  },
+  {
+    "code": "es",
+    "name": "西班牙语",
+    "native": "Español",
+    "en": "Spanish",
+    "flag": "🇪🇸"
+  },
+  {
+    "code": "fr",
+    "name": "法语",
+    "native": "Français",
+    "en": "French",
+    "flag": "🇫🇷"
+  },
+  {
+    "code": "de",
+    "name": "德语",
+    "native": "Deutsch",
+    "en": "German",
+    "flag": "🇩🇪"
+  },
+  {
+    "code": "ja",
+    "name": "日语",
+    "native": "日本語",
+    "en": "Japanese",
+    "flag": "🇯🇵"
+  },
+  {
+    "code": "ko",
+    "name": "韩语",
+    "native": "한국어",
+    "en": "Korean",
+    "flag": "🇰🇷"
+  },
+  {
+    "code": "pt",
+    "name": "葡萄牙语",
+    "native": "Português",
+    "en": "Portuguese",
+    "flag": "🇵🇹"
+  },
+  {
+    "code": "ru",
+    "name": "俄语",
+    "native": "Русский",
+    "en": "Russian",
+    "flag": "🇷🇺"
+  },
+  {
+    "code": "ar",
+    "name": "阿拉伯语",
+    "native": "العربية",
+    "en": "Arabic",
+    "flag": "🇸🇦"
+  },
+  {
+    "code": "it",
+    "name": "意大利语",
+    "native": "Italiano",
+    "en": "Italian",
+    "flag": "🇮🇹"
+  },
+  {
+    "code": "nl",
+    "name": "荷兰语",
+    "native": "Nederlands",
+    "en": "Dutch",
+    "flag": "🇳🇱"
+  },
+  {
+    "code": "pl",
+    "name": "波兰语",
+    "native": "Polski",
+    "en": "Polish",
+    "flag": "🇵🇱"
+  },
+  {
+    "code": "th",
+    "name": "泰语",
+    "native": "ไทย",
+    "en": "Thai",
+    "flag": "🇹🇭"
+  },
+  {
+    "code": "vi",
+    "name": "越南语",
+    "native": "Tiếng Việt",
+    "en": "Vietnamese",
+    "flag": "🇻🇳"
+  },
+  {
+    "code": "tr",
+    "name": "土耳其语",
+    "native": "Türkçe",
+    "en": "Turkish",
+    "flag": "🇹🇷"
+  },
+  {
+    "code": "sv",
+    "name": "瑞典语",
+    "native": "Svenska",
+    "en": "Swedish",
+    "flag": "🇸🇪"
+  },
+  {
+    "code": "da",
+    "name": "丹麦语",
+    "native": "Dansk",
+    "en": "Danish",
+    "flag": "🇩🇰"
+  },
+  {
+    "code": "fi",
+    "name": "芬兰语",
+    "native": "Suomi",
+    "en": "Finnish",
+    "flag": "🇫🇮"
+  },
+  {
+    "code": "uk",
+    "name": "乌克兰语",
+    "native": "Українська",
+    "en": "Ukrainian",
+    "flag": "🇺🇦"
+  }
+]

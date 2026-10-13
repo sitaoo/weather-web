@@ -1,0 +1,114 @@
+{
+  "0": {
+    "day": "linear-gradient(135deg, #2A82E4 0%, #3CA5ED 60%, #E68A4F 100%)",
+    "night": "linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%)"
+  },
+  "1": {
+    "day": "linear-gradient(135deg, #3794E7 0%, #6DBEF2 60%, #F59C66 100%)",
+    "night": "linear-gradient(135deg, #1A3C6E 0%, #2B579A 50%, #3A77C5 100%)"
+  },
+  "2": {
+    "day": "linear-gradient(135deg, #3794E7 0%, #6DBEF2 60%, #F59C66 100%)",
+    "night": "linear-gradient(135deg, #1A3C6E 0%, #2B579A 50%, #3A77C5 100%)"
+  },
+  "3": {
+    "day": "linear-gradient(135deg, #757F9A 0%, #D7DDE8 100%)",
+    "night": "linear-gradient(135deg, #232526 0%, #414345 100%)"
+  },
+  "45": {
+    "day": "linear-gradient(135deg, #7F8C8D 0%, #BDC3C7 100%)",
+    "night": "linear-gradient(135deg, #2C3E50 0%, #34495E 100%)"
+  },
+  "48": {
+    "day": "linear-gradient(135deg, #7F8C8D 0%, #BDC3C7 100%)",
+    "night": "linear-gradient(135deg, #2C3E50 0%, #34495E 100%)"
+  },
+  "51": {
+    "day": "linear-gradient(135deg, #517FA4 0%, #243949 100%)",
+    "night": "linear-gradient(135deg, #09131C 0%, #152736 100%)"
+  },
+  "53": {
+    "day": "linear-gradient(135deg, #517FA4 0%, #243949 100%)",
+    "night": "linear-gradient(135deg, #09131C 0%, #152736 100%)"
+  },
+  "55": {
+    "day": "linear-gradient(135deg, #517FA4 0%, #243949 100%)",
+    "night": "linear-gradient(135deg, #09131C 0%, #152736 100%)"
+  },
+  "56": {
+    "day": "linear-gradient(135deg, #6c7b95 0%, #a2b9bc 100%)",
+    "night": "linear-gradient(135deg, #1C222C 0%, #2D3D4F 100%)"
+  },
+  "57": {
+    "day": "linear-gradient(135deg, #6c7b95 0%, #a2b9bc 100%)",
+    "night": "linear-gradient(135deg, #1C222C 0%, #2D3D4F 100%)"
+  },
+  "61": {
+    "day": "linear-gradient(135deg, #517FA4 0%, #243949 100%)",
+    "night": "linear-gradient(135deg, #09131C 0%, #152736 100%)"
+  },
+  "63": {
+    "day": "linear-gradient(135deg, #517FA4 0%, #243949 100%)",
+    "night": "linear-gradient(135deg, #09131C 0%, #152736 100%)"
+  },
+  "65": {
+    "day": "linear-gradient(135deg, #517FA4 0%, #243949 100%)",
+    "night": "linear-gradient(135deg, #09131C 0%, #152736 100%)"
+  },
+  "66": {
+    "day": "linear-gradient(135deg, #6c7b95 0%, #a2b9bc 100%)",
+    "night": "linear-gradient(135deg, #1C222C 0%, #2D3D4F 100%)"
+  },
+  "67": {
+    "day": "linear-gradient(135deg, #6c7b95 0%, #a2b9bc 100%)",
+    "night": "linear-gradient(135deg, #1C222C 0%, #2D3D4F 100%)"
+  },
+  "71": {
+    "day": "linear-gradient(135deg, #E0EAFC 0%, #CFDEF3 100%)",
+    "night": "linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%)"
+  },
+  "73": {
+    "day": "linear-gradient(135deg, #E0EAFC 0%, #CFDEF3 100%)",
+    "night": "linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%)"
+  },
+  "75": {
+    "day": "linear-gradient(135deg, #E0EAFC 0%, #CFDEF3 100%)",
+    "night": "linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%)"
+  },
+  "77": {
+    "day": "linear-gradient(135deg, #E0EAFC 0%, #CFDEF3 100%)",
+    "night": "linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%)"
+  },
+  "80": {
+    "day": "linear-gradient(135deg, #517FA4 0%, #243949 100%)",
+    "night": "linear-gradient(135deg, #09131C 0%, #152736 100%)"
+  },
+  "81": {
+    "day": "linear-gradient(135deg, #517FA4 0%, #243949 100%)",
+    "night": "linear-gradient(135deg, #09131C 0%, #152736 100%)"
+  },
+  "82": {
+    "day": "linear-gradient(135deg, #517FA4 0%, #243949 100%)",
+    "night": "linear-gradient(135deg, #09131C 0%, #152736 100%)"
+  },
+  "85": {
+    "day": "linear-gradient(135deg, #E0EAFC 0%, #CFDEF3 100%)",
+    "night": "linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%)"
+  },
+  "86": {
+    "day": "linear-gradient(135deg, #E0EAFC 0%, #CFDEF3 100%)",
+    "night": "linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%)"
+  },
+  "95": {
+    "day": "linear-gradient(135deg, #141E30 0%, #243B55 100%)",
+    "night": "linear-gradient(135deg, #000000 0%, #0F2027 100%)"
+  },
+  "96": {
+    "day": "linear-gradient(135deg, #141E30 0%, #243B55 100%)",
+    "night": "linear-gradient(135deg, #000000 0%, #0F2027 100%)"
+  },
+  "99": {
+    "day": "linear-gradient(135deg, #141E30 0%, #243B55 100%)",
+    "night": "linear-gradient(135deg, #000000 0%, #0F2027 100%)"
+  }
+}

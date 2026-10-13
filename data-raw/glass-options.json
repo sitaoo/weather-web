@@ -1,0 +1,14 @@
+[
+  {
+    "id": "dark",
+    "default": false
+  },
+  {
+    "id": "light",
+    "default": true
+  },
+  {
+    "id": "weather",
+    "default": false
+  }
+]
