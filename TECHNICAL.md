@@ -95,13 +95,15 @@
 - **文案**：灾害 19 键 + 等级 4 键 + `warnHistory` × 21 语言（`warnLatest` 已删；`zh-tw` 运行时派生），发布单位与正文是中文原文不翻译（繁体范围暂不含预警，见下）。
 - **美国（NWS）**：`api.weather.gov/alerts/active?point=lat,lon`，免 Key + CORS `*`，按坐标直接返回生效中预警，无需匹配；`normalizeNWSAlert` 归一化为同一结构（`Actual` + 排除 `Cancel`，`severity` 五级→蓝/黄/橙/红：Minor/Unknown→蓝、Moderate→黄、Severe→橙、Extreme→红），事件名/标题/发布方保持英文原文；`description`/`instruction` 直作正文（不走抓取链）；行链接指向城市级 `forecast.weather.gov/MapClick` 页；城市级 5 分钟缓存；徽标不按 `sent` 算 6 小时（高温预警持续一整天是常态），改为按 `ends/expires` 有效期门控——生效中即显示。
 
-## 9. SDK（sdk/weather-api.js，数据层超集 v2.0.0）
+## 9. SDK（sdk/weather-api.js，数据层超集 v2.1.0）
 
-单文件约 80KB、零依赖（仅 `fetch`），覆盖全部查询面（预报/空气/地理编码/逆地理/IP/中美预警）+ 归一化 + 21 语言输出 + 内存 TTL 缓存（默认开）。`SDK-DATA` 数据区由抽取脚本第 9 节生成（转换器工厂 + WMO/星期/AQI 表），禁手改。主应用不引用 SDK（继续走 `js/api.js`）。
+单文件约 100KB、零依赖（仅 `fetch`），覆盖全部查询面（预报/空气/地理编码/逆地理/IP 本机+任意 IP/中美预警）+ 归一化 + 21 语言输出 + 内存 TTL 缓存（默认开）。`SDK-DATA` 数据区由抽取脚本第 9 节生成（转换器工厂 + WMO/星期/AQI 表），禁手改。主应用不引用 SDK（继续走 `js/api.js`）。
+
+v2.1.0 起 SDK 包含全部纯数据处理（含预警）：`js/api.js` 的 `lookupIP`、超时链（IP 5s / NMC+NWS 8s / Jina 10s / FireCrawl 15s）、`admin3/admin4`、`getBackgroundGradient`/`getWeatherIconUrl`、NWS 新旧字段超集，以及 `weather-window.js` 的 CN 预警链（`parseAlarmTitle`/`scopeLevel`/`alarmApplies`/`matchChinaWarnings`/`alarmAgeMs`，区划表经 `opts.resolveAdcode` 注入）与小工具（`isRainCode`/`tempColor`/`precipDrops`/`parseDMSCoord`/`detectQueryLang`/单位换算）。
 
 **明确不支持、留主应用侧的功能**：
 
-- **CN 预警 adcode 匹配**（§8 的上下级包含 + 层级链消歧，依赖 3212 行区划表）：SDK 的 `getChinaWarnings` 只给 NMC 裸列表。
+- **区划表本体**（3212 行 admin 表 + 机场库 + curated 纠错字典的懒加载 `.db.js` 文件）：SDK 只提供匹配算法，表数据由各产品自备并经 `resolveAdcode` 注入；不用表时回退发布单位名包含匹配。
 - **搜索召回增强**：curated 纠错字典、机场库、admin 扩展、市/省后缀重试、序号守卫——SDK 只有双字形合并 + 输出归一化。
 - **城市状态层**：多语言名快照缓存、语言切换恢复、北京兜底、定位城市置顶/不可删（`localStorage` 全套）。
 - **全部渲染**：横幅、历史展开、桌面徽标、逐小时/逐日/九宫格、壁纸画廊、玻璃特效。

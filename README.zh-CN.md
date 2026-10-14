@@ -52,7 +52,7 @@ python -m http.server 8000
 
 ## 给其他产品用的 SDK
 
-`sdk/weather-api.js` 是数据层超集（v2.0.0）：单文件约 80KB、零依赖，浏览器用 `<script>` 引入（`window.WeatherAPI`），Node 18+ 可 `require()`。覆盖全部查询面（预报/空气/地理编码/逆地理/IP/中美预警）+ 归一化 + 21 语言输出 + 内存 TTL 缓存（默认开，`opts.cache === false` 关）。文件内 `SDK-DATA` 数据区由抽取脚本从 data-raw/vendor 生成，勿手改；完整参数与返回结构见文件内 JSDoc。
+`sdk/weather-api.js` 是数据层超集（v2.1.0）：单文件约 100KB、零依赖，浏览器用 `<script>` 引入（`window.WeatherAPI`），Node 18+ 可 `require()`。覆盖全部查询面（预报/空气/地理编码/逆地理/IP 本机+任意 IP/中美预警）+ 归一化 + 21 语言输出 + 内存 TTL 缓存（默认开，`opts.cache === false` 关）。v2.1.0 起包含全部纯数据处理（含预警：CN 标题解析/adcode 匹配、NWS 新旧字段超集、背景渐变、图标 URL、rain-code/温度色标/DMS/语系判断/单位换算）。文件内 `SDK-DATA` 数据区由抽取脚本从 data-raw/vendor 生成，勿手改；完整参数与返回结构见文件内 JSDoc。
 
 ```html
 <script src="sdk/weather-api.js"></script>
@@ -69,14 +69,21 @@ python -m http.server 8000
 | `getPlace(id, {language})` | 按 id 精确取地点（语言切换重取显示名用） |
 | `getWeather(lat, lon, {unit, lang, timezone, forecastDays, pastDays})` | 当前 + 逐小时 + 预报（21 语言描述、图标 URL 自带） |
 | `getAirQuality(lat, lon, {lang})` | 美标 AQI + PM2.5/PM10 + 本地化等级（无数据返回 null，不抛错） |
-| `locateByIP()` | IP 粗定位（城市/坐标/时区，4 路链） |
+| `locateByIP()` | IP 粗定位（城市/坐标/时区，4 路链，单路 5s 超时） |
+| `lookupIP(ip)` | 任意 IP 定位（同 4 路链） |
 | `reverseGeocode(lat, lon, {language})` | 坐标→地名（中/繁输出归一化） |
 | `describe(code, {lang, isDay})` | WMO 天气码→文字描述+图标（21 语言） |
+| `getBackgroundGradient(code, isDay)` | 天气码+昼夜→背景渐变（范围回退） |
+| `getWeatherIconUrl(iconName)` | 图标名→Meteocons SVG 地址 |
 | `getWeekdays(lang)` | 星期名（21 语言） |
 | `describeAqi(aqi, lang)` | AQI 数值→等级+本地化描述 |
-| `getChinaWarnings()` | NMC 预警全量裸列表（adcode 匹配见主应用） |
-| `getUSAlerts(lat, lon)` | NWS 生效中预警（归一化，色级+正文直给） |
-| `getWarningBody(alert, {firecrawl})` | 预警正文（默认 jina，可配自托管 FireCrawl） |
+| `getChinaWarnings()` | NMC 预警全量列表（10 分钟缓存，8s 超时） |
+| `matchChinaWarnings(city, list, {resolveAdcode})` | NMC 预警匹配到城市（标题解析+adcode 上下级包含；区划表注入，无表时回退发布单位名匹配） |
+| `parseAlarmTitle(title)` / `scopeLevel` / `alarmApplies` / `alarmAgeMs` | CN 预警基础件（信号+等级解析、adcode 范围、包含判断、时效门控） |
+| `getUSAlerts(lat, lon)` | NWS 生效中预警（归一化按新到旧，英文+旧中文字段超集） |
+| `getWarningBody(alert, {firecrawl})` | 预警正文（默认 jina 10s 超时，可配自托管 FireCrawl 15s） |
+| `isRainCode(code)` / `tempColor(c)` / `precipDrops(p)` | 降水码判断、温度色标、水滴数 |
+| `parseDMSCoord(q)` / `detectQueryLang(q)` | DMS 坐标解析、查询语系判断 |
 | `clearCache()` | 清空内存缓存 |
 
 ## 简要技术说明

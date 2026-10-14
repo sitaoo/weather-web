@@ -52,7 +52,7 @@ Attribution requirement: keep "Weather data by Open-Meteo.com" visible in the in
 
 ## SDK for Other Products
 
-`sdk/weather-api.js` is the data-layer superset (v2.0.0): a single file of about 80KB with zero dependencies. Include it in the browser with `<script>` (exposes `window.WeatherAPI`), or `require()` it in Node 18+. It covers the full query surface (forecast / air quality / geocoding / reverse geocoding / IP / China and US alerts), plus normalization, 21-language output, and an in-memory TTL cache (on by default; `opts.cache === false` disables it). The `SDK-DATA` data block inside the file is generated from data-raw/vendor by the extraction script; do not edit it by hand. See the JSDoc inside the file for full parameters and return shapes.
+`sdk/weather-api.js` is the data-layer superset (v2.1.0): a single file of about 100KB with zero dependencies. Include it in the browser with `<script>` (exposes `window.WeatherAPI`), or `require()` it in Node 18+. It covers the full query surface (forecast / air quality / geocoding / reverse geocoding / IP self + arbitrary / China and US alerts), plus normalization, 21-language output, and an in-memory TTL cache (on by default; `opts.cache === false` disables it). Since v2.1.0 it also contains all pure data processing including warnings (CN title parsing / adcode matching via injected resolver, NWS superset fields, background gradients, icon URLs, rain-code / temp-color / DMS / script-lang / unit helpers). The `SDK-DATA` data block inside the file is generated from data-raw/vendor by the extraction script; do not edit it by hand. See the JSDoc inside the file for full parameters and return shapes.
 
 ```html
 <script src="sdk/weather-api.js"></script>
@@ -69,14 +69,21 @@ Attribution requirement: keep "Weather data by Open-Meteo.com" visible in the in
 | `getPlace(id, {language})` | Fetch a place exactly by id (used to re-fetch display names when switching language) |
 | `getWeather(lat, lon, {unit, lang, timezone, forecastDays, pastDays})` | Current + hourly + forecast (21-language descriptions, icon URLs included) |
 | `getAirQuality(lat, lon, {lang})` | US AQI + PM2.5/PM10 + localized level (returns null when no data, does not throw) |
-| `locateByIP()` | Rough IP location (city / coordinates / timezone, 4-service chain) |
+| `locateByIP()` | Rough IP location (city / coordinates / timezone, 4-service chain, 5s per-provider timeout) |
+| `lookupIP(ip)` | Locate an arbitrary IP (same 4-service chain) |
 | `reverseGeocode(lat, lon, {language})` | Coordinates → place name (Simplified/Traditional output normalized) |
 | `describe(code, {lang, isDay})` | WMO weather code → text description + icon (21 languages) |
+| `getBackgroundGradient(code, isDay)` | Gradient background by WMO code + day/night (range fallback) |
+| `getWeatherIconUrl(iconName)` | Meteocons SVG URL for an icon name |
 | `getWeekdays(lang)` | Weekday names (21 languages) |
 | `describeAqi(aqi, lang)` | AQI value → level + localized description |
-| `getChinaWarnings()` | Full raw list of NMC warnings (adcode matching is done in the main app) |
-| `getUSAlerts(lat, lon)` | Active NWS alerts (normalized, color level + body text provided directly) |
-| `getWarningBody(alert, {firecrawl})` | Warning body text (jina by default; self-hosted FireCrawl can be configured) |
+| `getChinaWarnings()` | Full raw list of NMC warnings (10-min cache, 8s timeout) |
+| `matchChinaWarnings(city, list, {resolveAdcode})` | Match NMC warnings to a city (title parsing + adcode containment; admin table injected, name fallback without it) |
+| `parseAlarmTitle(title)` / `scopeLevel` / `alarmApplies` / `alarmAgeMs` | CN warning primitives (signal+level parsing, adcode scope, containment check, age gating) |
+| `getUSAlerts(lat, lon)` | Active NWS alerts (normalized newest-first, English + legacy Chinese-compatible fields) |
+| `getWarningBody(alert, {firecrawl})` | Warning body text (jina by default, 10s timeout; self-hosted FireCrawl 15s can be configured) |
+| `isRainCode(code)` / `tempColor(c)` / `precipDrops(p)` | Rain-code check, temperature color scale, droplet count |
+| `parseDMSCoord(q)` / `detectQueryLang(q)` | DMS coordinate parsing, script-aware geocoding language hint |
 | `clearCache()` | Clear the in-memory cache |
 
 ## Technical Notes
